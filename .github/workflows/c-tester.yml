@@ -2,14 +2,24 @@ name: C/C++ CI
 
 on: [push]
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: make fclean
-      run: make fclean
-    - name: make
-      run: make
-    - name: make clean
-      run: make clean
+
+runs:
+  using: "composite"
+  steps:
+  - name: Checkout repo
+    uses: actions/checkout@v2
+  - name: Installation
+    shell: bash
+    run: |-
+      sudo apt install libcsfml-dev
+  jobs:
+    build:
+      runs-on: ubuntu-20.04
+      steps:
+      - uses: actions/checkout@v2
+      - name: make fclean
+        run: make fclean
+      - name: make
+        run: make
+      - name: make clean
+        run: make clean
