@@ -10,16 +10,10 @@ runs:
     uses: actions/checkout@v2
   - name: Installation
     shell: bash
-    run: |-
-      sudo apt install libcsfml-dev
-  jobs:
-    build:
-      runs-on: ubuntu-20.04
-      steps:
-      - uses: actions/checkout@v2
-      - name: make fclean
-        run: make fclean
-      - name: make
-        run: make
-      - name: make clean
-        run: make clean
+    run: sudo apt install libcsfml-dev
+  - name: make fclean
+    run: make fclean
+  - name: make
+    run: make
+  - name: make clean
+    run: make clean
