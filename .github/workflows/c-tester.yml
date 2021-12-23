@@ -5,7 +5,7 @@ on: [push]
 
 
 jobs:
-  install:
+  build:
     runs-on: ubuntu-20.04
     steps:
     - name: Checkout repo
@@ -14,9 +14,6 @@ jobs:
       shell: bash
       run: 
         sudo apt install libcsfml-dev
-  build:
-    runs-on: ubuntu-20.04
-    steps:
     - uses: actions/checkout@v2
     - name: make fclean
       run: make fclean
